@@ -35,11 +35,8 @@ client = MongoClient('mongodb+srv://kartikgamot2003:0xyBuUuQcaO4xg0G@cluster0.nh
 db = client.flask_db
 todos = db.Database
 
-with open("dataset.json") as f:
-    data = json.load(f)
-    
-todos.insert_many(data)
-# todos.delete_many({})
+
+
 
 
 def getMappingDictionary(unique_data):
