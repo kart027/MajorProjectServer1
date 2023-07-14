@@ -170,8 +170,6 @@ virtualenv
 wcwidth
 webencodings
 websocket-client
-Werkzeug
 wikipedia
 wrapt
 yellowbrick
-werkzeug.wrappers
