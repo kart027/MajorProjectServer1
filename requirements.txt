@@ -174,3 +174,4 @@ Werkzeug
 wikipedia
 wrapt
 yellowbrick
+werkzeug.wrappers
