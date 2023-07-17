@@ -30,7 +30,7 @@ app = Flask(__name__)
 api = Api(app)
 # importing libraries    
 
-client = MongoClient('mongodb+srv://kartikgamot2003:0xyBuUuQcaO4xg0G@cluster0.nh9tvpe.mongodb.net/')
+client = MongoClient('you url')
 
 db = client.flask_db
 todos = db.Database
