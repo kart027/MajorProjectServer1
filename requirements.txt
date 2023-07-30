@@ -17,7 +17,7 @@ matplotlib
 numpy
 packaging
 pandas
-Pillow1
+Pillow
 plotly
 pymongo
 pyparsing
