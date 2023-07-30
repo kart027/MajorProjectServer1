@@ -270,7 +270,7 @@ def ok():
 
      Newdata.index.name = '_id'
 # dataset['Relationship'].iloc[-1]
-     dataset2 = pd.read_csv('dataset.csv') 
+     
 
 
 
