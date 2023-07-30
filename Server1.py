@@ -30,7 +30,7 @@ app = Flask(__name__)
 api = Api(app)
 # importing libraries    
 
-client = MongoClient('you url')
+client = MongoClient('mongodb+srv://kartikgamot2003:0xyBuUuQcaO4xg0G@cluster0.nh9tvpe.mongodb.net/')
 
 db = client.flask_db
 todos = db.Database
@@ -116,7 +116,7 @@ def ok():
      todos.insert_one(user_input)
      k = todos.find({},{"_id":0})
      dataset = pd.DataFrame(list(k))
-     # print(dataset)
+     print(dataset)
           
      
 #      # print(user_input) 
@@ -129,10 +129,6 @@ def ok():
 #     # dataset.head(150)
 
 
-
-     df = pd.DataFrame(dataset)
-     newdf = df.copy()
-    
 
 
 # function to create a dictionary of unique values of column mapped to numerical values
@@ -181,7 +177,11 @@ def ok():
 
 
 
+    
 
+     df = pd.DataFrame(dataset)
+     newdf = df.copy()
+    
 
 # extract headers from the database
      dataframe_headers = dataset.columns.values
