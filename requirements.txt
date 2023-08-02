@@ -27,7 +27,7 @@ pytz
 sklearn
 scipy
 six
-sklearn
+scikit-learn
 tenacity
 threadpoolctl
 tzdata
