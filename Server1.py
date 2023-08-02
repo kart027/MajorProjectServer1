@@ -2,6 +2,7 @@ from flask import Flask,jsonify,request
 from flask_restful import Api,Resource
 import numpy as nm    
 from pymongo import MongoClient
+from flask_cors import cross_origin
   
 import pandas as pd
 import pandas as pd
@@ -36,7 +37,11 @@ db = client.flask_db
 todos = db.Database
 
 
+# with open("dataset.json") as f:
+#     data = json.load(f)
+# todos.delete_many({})
 
+# todos.insert_many(data)
 
 
 def getMappingDictionary(unique_data):
@@ -47,7 +52,10 @@ def getMappingDictionary(unique_data):
 
 
 @app.route('/addEntry',methods=['POST'])
+@cross_origin()
 def okk():
+     
+     
      content = request.json
      print(content)
      age = content['age']
@@ -61,19 +69,19 @@ def okk():
      Image_Link =  content['ImageLink']
      MaxBudget =  content['budget']
      GiftName =  content['Gift']
-     
+     age = int(age)
      user_input = {
-        'Age':[age],
-        'Gender':[gender],
-        'Relationship':[relatioship],
-        'Occasion':[occasion],
-        'Budget':[budget],
-        'MaxBudget':[MaxBudget],
-        'Gift':[GiftName],
-        'Rating':[rating],
-        'Link':[Link],
-        'Image Link':[Image_Link],
-        'Interest':[intrest]
+        'Age':age,
+        'Gender':gender,
+        'Relationship':relatioship,
+        'Occasion':occasion,
+        'Budget':budget,
+        'MaxBudget':MaxBudget,
+        'Gift':GiftName,
+        'Rating':rating,
+        'Link':Link,
+        'Image Link':Image_Link,
+        'Interest':intrest
      }
      todos.insert_one(user_input)
      todos.delete_many({"Gift":"https//amazon.com"})
@@ -84,8 +92,11 @@ def okk():
      
 
 @app.route('/getGift',methods=['POST'])
+@cross_origin()
 def ok():
     
+    
+        
      content = request.json
      age = content['age']
      gender =content['gender']
@@ -94,9 +105,7 @@ def ok():
      occasion = content['occasion']
      budget = content['budget']
      
-    
-     # todos.delete_many({})
-    
+     age = int(age)
 
      
      user_input = {
@@ -116,7 +125,11 @@ def ok():
      todos.insert_one(user_input)
      k = todos.find({},{"_id":0})
      dataset = pd.DataFrame(list(k))
-     print(dataset)
+     
+     # dataset = pd.read_csv('dataset.csv',encoding='latin-1') 
+     # print(dataset)
+     # neww = pdd.DataFrame(user_input);
+     # neww.to_csv(r'dataset.csv')
           
      
 #      # print(user_input) 
@@ -129,6 +142,9 @@ def ok():
 #     # dataset.head(150)
 
 
+     
+     
+    
 
 
 # function to create a dictionary of unique values of column mapped to numerical values
@@ -177,11 +193,7 @@ def ok():
 
 
 
-    
 
-     df = pd.DataFrame(dataset)
-     newdf = df.copy()
-    
 
 # extract headers from the database
      dataframe_headers = dataset.columns.values
@@ -189,7 +201,8 @@ def ok():
 
 
 
-
+     df = pd.DataFrame(dataset)
+     newdf = df.copy()
 
 # drop unnecessary columns from dataframe
      df.drop(['Relationship','Occasion','Budget','MaxBudget','Gift','Rating','Link','Image Link'],axis=1, inplace=True)
@@ -270,7 +283,7 @@ def ok():
 
      Newdata.index.name = '_id'
 # dataset['Relationship'].iloc[-1]
-     
+     # dataset2 = pd.read_csv('dataset.csv') 
 
 
 
@@ -326,4 +339,4 @@ def ok():
      return jsonify(final_data);
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0',port=5000)
+    app.run(debug=True)
