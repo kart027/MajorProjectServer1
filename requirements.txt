@@ -6,6 +6,7 @@ contourpy
 cycler
 dnspython
 Flask
+Flask-Cors
 Flask-RESTful
 fonttools
 itsdangerous
