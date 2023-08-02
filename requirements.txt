@@ -24,7 +24,6 @@ pymongo
 pyparsing
 python-dateutil
 pytz
-sklearn
 scipy
 six
 scikit-learn
