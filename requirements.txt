@@ -23,7 +23,7 @@ pymongo
 pyparsing
 python-dateutil
 pytz
-scikit-learn
+sklearn
 scipy
 six
 sklearn
